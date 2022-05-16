@@ -1,0 +1,27 @@
+# C++ Outline
+
+- Variables, types, cstdint
+- Typedef, using
+- Operators, calls, and basic syntax
+- Arrays
+- Structures, brace initialization
+- Dynamic memory allocation
+- Pointers and pointer arithmetic
+- Casting and modern casts
+- References
+- Const
+- Functions
+- Types, signatures
+- Program invocation, main
+- Standard input and output
+- Classes, what is class, motivation: resizable array
+- Placement new, its relation to constructor initializers
+- Inheritance and friends
+- Vector, STL
+- Templating, revisit resizable array
+- Template metaprogramming
+- Vtables, dynamic dispatch, RTTI
+- Smart pointers
+- Move semantics
+- Exceptions, orthogonal returns
+- Preprocessor macros
