@@ -625,11 +625,11 @@ window.curricula.cpp = [
     "content": "<p></p>\n"
   },
   {
-    "id": "variadic-template-parameters",
+    "id": "variadic-templates",
     "parentIds": [
       "templates"
     ],
-    "title": "Variadic Template Parameters",
+    "title": "Variadic Templates",
     "tags": [],
     "content": "<p></p>\n"
   },

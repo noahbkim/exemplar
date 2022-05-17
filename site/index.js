@@ -274,7 +274,14 @@ class Graph {
     if (this.selection === selection) {
       d3.select("#content").classed("visible", false);
       this.selection = null;
+      // this.zoom.scaleBy(this.group, 0.6);
+      // this.zoom.translateBy(this.group, -window.innerWidth * 0.6, 0);
     } else {
+      if (this.selection === null) {
+        // this.zoom.scaleBy(this.group,1 / 0.7);
+        // this.zoom.translateBy(this.group, window.innerWidth * 0.6, 0);
+      }
+
       this.selection = selection;
       this.selection.controller.select();
       d3.select("#content").classed("visible", true);
