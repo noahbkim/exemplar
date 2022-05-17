@@ -1,0 +1,5 @@
+---
+title: Structs
+requires:
+  - types
+---

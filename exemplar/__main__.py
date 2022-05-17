@@ -1,42 +1,47 @@
 import argparse
-import sys
+import json
 from pathlib import Path
 
-from exemplar.shell import *
+from exemplar.topic import *
 from exemplar.common import files
 
 
-# "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64\cl.exe"
-
-
-def start(options: dict):
+def build(options: dict):
     """Start a curriculum."""
 
     curriculum_path = Path(options["curriculum"])
-    work_path = Path(options["work"])
+    curriculum_name = curriculum_path.parts[-1]
+    target_path = Path("site", "curricula", f"{curriculum_name}.js")
 
-    if not curriculum_path.is_dir():
-        print("invalid curriculum directory!", file=sys.stderr)
-        return
+    topics = []
+    for path in curriculum_path.rglob("*.md"):
+        topics.append(Topic.parse(path))
 
-    if work_path.exists():
-        if input(f"replace work directory {work_path.absolute()}? ").strip().lower().startswith("y"):
-            files.delete(work_path)
-        else:
-            print("cancelling!")
-            return
+    topic_ids = {topic.id for topic in topics}
+    for topic in topics:
+        for requirement in topic.requires:
+            if requirement not in topic_ids:
+                print(f"{topic.path} requires missing topic {requirement}")
+                return
 
-    setup_work_directory(curriculum_path, work_path)
+    serialized = []
+    for topic in topics:
+        serialized.append(topic.serialize())
+
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    with target_path.open("w") as file:
+        file.write("if (window.curricula === undefined) window.curricula = {};\nwindow.curricula.cpp = ")
+        json.dump(serialized, file, indent=2)
+        file.write(";")
 
 
 parser = argparse.ArgumentParser()
 command_parser = parser.add_subparsers(title="command", required=True, dest="command")
 
-start_parser = command_parser.add_parser("start", help="start a curriculum")
-start_parser.add_argument("curriculum", help="a path to a curriculum directory")
-start_parser.add_argument("--work", default="work", help="a path to set up in, defaults to ./work")
+build_parser = command_parser.add_parser("build", help="start a curriculum")
+build_parser.add_argument("curriculum", help="a path to a curriculum directory")
 
 args = vars(parser.parse_args())
 dict(
-    start=start,
+    build=build,
 )[args.pop("command")](args)

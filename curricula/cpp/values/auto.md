@@ -1,0 +1,5 @@
+---
+title: Auto
+requires:
+  - types
+---
