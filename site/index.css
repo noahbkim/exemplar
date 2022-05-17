@@ -1,6 +1,7 @@
 body {
   background-color: black;
   margin: 0;
+  font-family: sans-serif;
 }
 
 #svg {
@@ -22,4 +23,76 @@ body {
 #content.visible {
   display: block;
   background-color: darkgray;
+}
+
+#content {
+  padding: 2rem 2rem;
+  box-sizing: border-box;
+}
+
+#content h1 {
+  margin-top: 0;
+}
+
+.edge-line {
+  fill: none;
+  stroke-width: 3;
+  stroke: white;
+}
+
+.hover-ancestor .edge-line {
+  stroke: lightblue;
+}
+
+.edge-arrow {
+  fill: white;
+  stroke-width: 1.5;
+  stroke: white;
+}
+
+.hover-ancestor .edge-arrow {
+  fill: lightblue;
+  stroke: lightblue;
+}
+
+.node-circle {
+  fill: white;
+  cursor: pointer;
+}
+
+.hover-ancestor .node-circle {
+  stroke: lightblue;
+  stroke-width: 5;
+}
+
+.hover .node-circle {
+  fill: lightblue;
+}
+
+.select .node-circle {
+  fill: dodgerblue;
+}
+
+.node-text {
+  font-weight: bold;
+  font-family: sans-serif;
+  text-anchor: middle;
+  fill: black;
+}
+
+.node-text-box {
+  fill: white;
+  opacity: 85%;
+}
+
+.hover-ancestor .node-text-box {
+  fill: lightblue;
+}
+
+.hover .node-text-box {
+  fill: lightblue;
+}
+
+.select .node-text-box {
+  fill: dodgerblue;
 }

@@ -10,6 +10,12 @@ __all__ = (
 
 
 FRONTMATTER_SEPARATOR = "---\n"
+MARKDOWN_EXTRAS = (
+    "fenced-code-blocks",
+    "numbering",
+    "spoiler",
+    "strike",
+    "tables",)
 
 
 class InvalidFormat(Exception):
@@ -84,4 +90,4 @@ class Topic:
                 title=validate_string(frontmatter["title"], "title", path),
                 requires=validate_list_of_strings(frontmatter.get("requires", []), "requires", path),
                 tags=validate_list_of_strings(frontmatter.get("tags", []), "tags", path),
-                content=markdown2.markdown(content_slice))
+                content=markdown2.markdown(content_slice, extras=MARKDOWN_EXTRAS))
