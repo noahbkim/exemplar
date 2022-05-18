@@ -41,7 +41,7 @@ body {
 }
 
 .hover-ancestor .edge-line {
-  stroke: lightblue;
+  stroke: dodgerblue;
 }
 
 .edge-arrow {
@@ -51,8 +51,8 @@ body {
 }
 
 .hover-ancestor .edge-arrow {
-  fill: lightblue;
-  stroke: lightblue;
+  fill: dodgerblue;
+  stroke: dodgerblue;
 }
 
 .node-circle {
@@ -61,12 +61,12 @@ body {
 }
 
 .hover-ancestor .node-circle {
-  stroke: lightblue;
+  stroke: dodgerblue;
   stroke-width: 5;
 }
 
 .hover .node-circle {
-  fill: lightblue;
+  fill: dodgerblue;
 }
 
 .select .node-circle {
@@ -86,11 +86,11 @@ body {
 }
 
 .hover-ancestor .node-text-box {
-  fill: lightblue;
+  fill: dodgerblue;
 }
 
 .hover .node-text-box {
-  fill: lightblue;
+  fill: dodgerblue;
 }
 
 .select .node-text-box {

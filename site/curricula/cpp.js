@@ -549,7 +549,8 @@ window.curricula.cpp = [
   {
     "id": "virtual-tables",
     "parentIds": [
-      "virtual-methods"
+      "virtual-methods",
+      "virtual-inheritance"
     ],
     "title": "Virtual Tables",
     "tags": [],
