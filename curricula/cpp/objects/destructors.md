@@ -1,6 +1,5 @@
 ---
 title: Destructors
 requires:
-  - classes
-  - structs
+  - objects
 ---

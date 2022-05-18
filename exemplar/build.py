@@ -40,15 +40,19 @@ def handler(options: dict) -> int:
         return -1
 
     # Check dependencies and related
+    valid = True
     for topic in topics.values():
         for requirement in topic.requires:
             if requirement not in topics:
                 print(f"error: {topic.path} requires missing topic {requirement}", file=sys.stderr)
-                return -1
+                valid = False
         for relative in topic.related:
             if relative not in topics:
                 print(f"error: {topic.path} relates to missing topic {relative}", file=sys.stderr)
-                return -1
+                valid = False
+
+    if not valid:
+        return -1
 
     # Check for redundant dependencies
     for topic in topics.values():

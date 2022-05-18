@@ -1,5 +1,5 @@
 ---
 title: Virtual Methods
 requires:
-  - class-inheritance
+  - inheritance
 ---

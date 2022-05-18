@@ -1,6 +1,6 @@
 ---
 title: Class Templates
 requires:
-  - classes
+  - objects
   - templates
 ---

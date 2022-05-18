@@ -1,6 +1,5 @@
 ---
 title: Constructors
 requires:
-  - classes
-  - structs
+  - objects
 ---

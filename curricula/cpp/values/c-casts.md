@@ -1,5 +1,5 @@
 ---
 title: C Casts
 requires:
-  - types
+  - values
 ---

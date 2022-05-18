@@ -182,8 +182,9 @@ class Graph {
     const {width, height} = this.layout(this.dag);
 
     // Size SVG and zoom
-    this.svg.attr("viewBox", `${-NODE_SIZE} ${-NODE_SIZE} ${width + 2 * NODE_SIZE} ${height + 2 * NODE_SIZE}`);
-    this.zoom.translateExtent([[0, 0], [width, height]]);
+    const safe = {x: -NODE_SIZE, y: -NODE_SIZE, w: width + 2 * NODE_SIZE, h: height + 2 * NODE_SIZE};
+    this.svg.attr("viewBox", `${safe.x} ${safe.y} ${safe.w} ${safe.h}`);
+    this.zoom.translateExtent([[safe.x, safe.y], [safe.w, safe.h]]);
 
     // Attach controller to nodes and edges
     this.dag.descendants().forEach((node) => node.controller = new NodeController(node));

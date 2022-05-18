@@ -1,5 +1,5 @@
 ---
 title: Brace Initialization
 requires:
-  - structs
+  - objects
 ---

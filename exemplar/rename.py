@@ -20,19 +20,13 @@ def handler(options: dict):
     source_name = options["source"]
     destination_name = options["destination"]
 
-    try:
+    if source_name in topics:
         source = topics[source_name]
-    except KeyError:
-        print(f"error: no topic named {source_name}")
-        return
+        new_path = source.path.parent.joinpath(f"{destination_name}.md")
+        shutil.move(str(source.path), str(new_path))
+        source.path = new_path
+        print(f"info: moved {source.path} to {new_path}")
 
-    # Rename file
-    new_path = source.path.parent.joinpath(f"{destination_name}.md")
-    shutil.move(str(source.path), str(new_path))
-    source.path = new_path
-    print(f"info: moved {source.path} to {new_path}")
-
-    topics.pop(source.id)
     for topic in topics.values():
         text = topic.path.read_text()
 

@@ -1,5 +1,5 @@
 ---
-title: Structs
+title: Instance Methods
 requires:
   - objects
 ---

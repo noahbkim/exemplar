@@ -1,5 +1,5 @@
 ---
 title: Member Accessibility
 requires:
-  - classes
+  - objects
 ---

@@ -1,6 +1,6 @@
 ---
 title: Class Inheritance
 requires:
-  - classes
+  - objects
   - polymorphism
 ---

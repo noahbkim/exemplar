@@ -68,6 +68,7 @@ window.curricula.cpp = [
     "id": "reinterpret-cast",
     "parentIds": [
       "c-casts",
+      "integer-sizes",
       "memory"
     ],
     "title": "Reinterpret Cast",
@@ -153,7 +154,7 @@ window.curricula.cpp = [
   {
     "id": "c-casts",
     "parentIds": [
-      "types"
+      "values"
     ],
     "title": "C Casts",
     "related": [],
@@ -338,7 +339,7 @@ window.curricula.cpp = [
   {
     "id": "brace-initialization",
     "parentIds": [
-      "structs"
+      "objects"
     ],
     "title": "Brace Initialization",
     "related": [],
@@ -348,7 +349,8 @@ window.curricula.cpp = [
   {
     "id": "static-cast",
     "parentIds": [
-      "c-casts"
+      "c-casts",
+      "templates"
     ],
     "title": "Static Cast",
     "related": [],
@@ -380,8 +382,7 @@ window.curricula.cpp = [
     "parentIds": [
       "operators",
       "references",
-      "classes",
-      "structs"
+      "objects"
     ],
     "title": "Assignment Operator",
     "related": [],
@@ -419,19 +420,11 @@ window.curricula.cpp = [
     "content": "<p></p>\n"
   },
   {
-    "id": "structs",
-    "parentIds": [
-      "objects"
-    ],
-    "title": "Structs",
-    "related": [],
-    "tags": [],
-    "content": "<p></p>\n"
-  },
-  {
     "id": "dynamic-cast",
     "parentIds": [
-      "c-casts"
+      "c-casts",
+      "templates",
+      "virtual-inheritance"
     ],
     "title": "Dynamic Cast",
     "related": [],
@@ -450,20 +443,9 @@ window.curricula.cpp = [
     "content": "<p></p>\n"
   },
   {
-    "id": "struct-methods",
-    "parentIds": [
-      "structs"
-    ],
-    "title": "Struct Methods",
-    "related": [],
-    "tags": [],
-    "content": "<p></p>\n"
-  },
-  {
     "id": "static-methods",
     "parentIds": [
-      "classes",
-      "structs"
+      "objects"
     ],
     "title": "Static Methods",
     "related": [],
@@ -493,8 +475,7 @@ window.curricula.cpp = [
   {
     "id": "constructors",
     "parentIds": [
-      "classes",
-      "structs"
+      "objects"
     ],
     "title": "Constructors",
     "related": [],
@@ -515,7 +496,7 @@ window.curricula.cpp = [
   {
     "id": "member-accessibility",
     "parentIds": [
-      "classes"
+      "objects"
     ],
     "title": "Member Accessibility",
     "related": [],
@@ -523,29 +504,9 @@ window.curricula.cpp = [
     "content": "<p></p>\n"
   },
   {
-    "id": "struct-inheritance",
+    "id": "inheritance",
     "parentIds": [
-      "structs"
-    ],
-    "title": "Struct Inheritance",
-    "related": [],
-    "tags": [],
-    "content": "<p></p>\n"
-  },
-  {
-    "id": "classes",
-    "parentIds": [
-      "objects"
-    ],
-    "title": "Classes",
-    "related": [],
-    "tags": [],
-    "content": "<p></p>\n"
-  },
-  {
-    "id": "class-inheritance",
-    "parentIds": [
-      "classes",
+      "objects",
       "polymorphism"
     ],
     "title": "Class Inheritance",
@@ -576,8 +537,7 @@ window.curricula.cpp = [
   {
     "id": "destructors",
     "parentIds": [
-      "classes",
-      "structs"
+      "objects"
     ],
     "title": "Destructors",
     "related": [],
@@ -587,8 +547,7 @@ window.curricula.cpp = [
   {
     "id": "associated-types",
     "parentIds": [
-      "classes",
-      "structs"
+      "objects"
     ],
     "title": "Associated Types",
     "related": [],
@@ -598,7 +557,7 @@ window.curricula.cpp = [
   {
     "id": "virtual-methods",
     "parentIds": [
-      "class-inheritance"
+      "inheritance"
     ],
     "title": "Virtual Methods",
     "related": [],
@@ -608,7 +567,7 @@ window.curricula.cpp = [
   {
     "id": "virtual-inheritance",
     "parentIds": [
-      "class-inheritance"
+      "inheritance"
     ],
     "title": "Virtual Inheritance",
     "related": [],
@@ -631,6 +590,16 @@ window.curricula.cpp = [
       "member-accessibility"
     ],
     "title": "Friend",
+    "related": [],
+    "tags": [],
+    "content": "<p></p>\n"
+  },
+  {
+    "id": "instance-methods",
+    "parentIds": [
+      "objects"
+    ],
+    "title": "Instance Methods",
     "related": [],
     "tags": [],
     "content": "<p></p>\n"
@@ -949,7 +918,7 @@ window.curricula.cpp = [
   {
     "id": "class-templates",
     "parentIds": [
-      "classes",
+      "objects",
       "templates"
     ],
     "title": "Class Templates",

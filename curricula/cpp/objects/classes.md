@@ -1,5 +1,0 @@
----
-title: Classes
-requires:
-  - objects
----
