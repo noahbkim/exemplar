@@ -1,3 +1,5 @@
 ---
 title: Enums
+requires:
+  - values
 ---

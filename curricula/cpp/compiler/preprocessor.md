@@ -1,3 +1,5 @@
 ---
 title: Preprocessor
+requires:
+  - compiler
 ---

@@ -1,5 +1,5 @@
 ---
 title: Structs
 requires:
-  - types
+  - objects
 ---

@@ -1,3 +1,5 @@
 ---
 title: Headers
+requires:
+  - include
 ---

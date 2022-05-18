@@ -1,3 +1,5 @@
 ---
 title: Templates
+requires:
+  - variables
 ---

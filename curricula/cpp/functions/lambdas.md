@@ -1,5 +1,5 @@
 ---
-title: Objects
+title: Lambdas
 requires:
   - functions
 ---

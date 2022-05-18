@@ -1,3 +1,5 @@
 ---
 title: Stl
+requires:
+  - templates
 ---

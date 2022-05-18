@@ -34,7 +34,9 @@ window.curricula.cpp = [
   },
   {
     "id": "memory",
-    "parentIds": [],
+    "parentIds": [
+      "processes"
+    ],
     "title": "Memory",
     "related": [],
     "tags": [],
@@ -137,6 +139,18 @@ window.curricula.cpp = [
     "content": "<p></p>\n"
   },
   {
+    "id": "constant-expressions",
+    "parentIds": [
+      "variables"
+    ],
+    "title": "Constant Expressions",
+    "related": [
+      "constant-variables"
+    ],
+    "tags": [],
+    "content": "<p></p>\n"
+  },
+  {
     "id": "c-casts",
     "parentIds": [
       "types"
@@ -167,9 +181,20 @@ window.curricula.cpp = [
     "content": "<p></p>\n"
   },
   {
+    "id": "using-namespace",
+    "parentIds": [
+      "using",
+      "namespaces"
+    ],
+    "title": "Using Namespace",
+    "related": [],
+    "tags": [],
+    "content": "<p></p>\n"
+  },
+  {
     "id": "auto",
     "parentIds": [
-      "types"
+      "variables"
     ],
     "title": "Auto",
     "related": [],
@@ -273,13 +298,17 @@ window.curricula.cpp = [
       "variables"
     ],
     "title": "Constant Variables",
-    "related": [],
+    "related": [
+      "constant-expressions"
+    ],
     "tags": [],
     "content": "<p></p>\n"
   },
   {
     "id": "enums",
-    "parentIds": [],
+    "parentIds": [
+      "values"
+    ],
     "title": "Enums",
     "related": [],
     "tags": [],
@@ -362,8 +391,7 @@ window.curricula.cpp = [
   {
     "id": "using",
     "parentIds": [
-      "types",
-      "namespaces"
+      "types"
     ],
     "title": "Using",
     "related": [],
@@ -372,7 +400,9 @@ window.curricula.cpp = [
   },
   {
     "id": "types",
-    "parentIds": [],
+    "parentIds": [
+      "compiler"
+    ],
     "title": "Types",
     "related": [],
     "tags": [],
@@ -391,7 +421,7 @@ window.curricula.cpp = [
   {
     "id": "structs",
     "parentIds": [
-      "types"
+      "objects"
     ],
     "title": "Structs",
     "related": [],
@@ -422,8 +452,7 @@ window.curricula.cpp = [
   {
     "id": "struct-methods",
     "parentIds": [
-      "structs",
-      "objects"
+      "structs"
     ],
     "title": "Struct Methods",
     "related": [],
@@ -516,7 +545,8 @@ window.curricula.cpp = [
   {
     "id": "class-inheritance",
     "parentIds": [
-      "classes"
+      "classes",
+      "polymorphism"
     ],
     "title": "Class Inheritance",
     "related": [],
@@ -536,7 +566,7 @@ window.curricula.cpp = [
   {
     "id": "objects",
     "parentIds": [
-      "types"
+      "functions"
     ],
     "title": "Objects",
     "related": [],
@@ -547,8 +577,7 @@ window.curricula.cpp = [
     "id": "destructors",
     "parentIds": [
       "classes",
-      "structs",
-      "scope"
+      "structs"
     ],
     "title": "Destructors",
     "related": [],
@@ -635,8 +664,20 @@ window.curricula.cpp = [
     "content": "<p></p>\n"
   },
   {
+    "id": "processes",
+    "parentIds": [
+      "operating-system"
+    ],
+    "title": "Processes",
+    "related": [],
+    "tags": [],
+    "content": "<p></p>\n"
+  },
+  {
     "id": "execution",
-    "parentIds": [],
+    "parentIds": [
+      "processes"
+    ],
     "title": "Execution",
     "related": [],
     "tags": [],
@@ -684,6 +725,17 @@ window.curricula.cpp = [
     "content": "<p></p>\n"
   },
   {
+    "id": "switch-enum",
+    "parentIds": [
+      "switch-statements",
+      "enums"
+    ],
+    "title": "Switch on Enums",
+    "related": [],
+    "tags": [],
+    "content": "<p></p>\n"
+  },
+  {
     "id": "loop-statements",
     "parentIds": [
       "control-statements"
@@ -696,8 +748,7 @@ window.curricula.cpp = [
   {
     "id": "switch-statements",
     "parentIds": [
-      "loop-break",
-      "enums"
+      "control-statements"
     ],
     "title": "Switch Statements",
     "related": [],
@@ -749,7 +800,9 @@ window.curricula.cpp = [
   },
   {
     "id": "stl",
-    "parentIds": [],
+    "parentIds": [
+      "templates"
+    ],
     "title": "Stl",
     "related": [],
     "tags": [],
@@ -767,8 +820,20 @@ window.curricula.cpp = [
   },
   {
     "id": "scope",
-    "parentIds": [],
+    "parentIds": [
+      "variables"
+    ],
     "title": "Scope",
+    "related": [],
+    "tags": [],
+    "content": "<p></p>\n"
+  },
+  {
+    "id": "lambdas",
+    "parentIds": [
+      "functions"
+    ],
+    "title": "Lambdas",
     "related": [],
     "tags": [],
     "content": "<p></p>\n"
@@ -813,7 +878,6 @@ window.curricula.cpp = [
     "id": "functions",
     "parentIds": [
       "scope",
-      "types",
       "memory"
     ],
     "title": "Functions",
@@ -823,7 +887,9 @@ window.curricula.cpp = [
   },
   {
     "id": "templates",
-    "parentIds": [],
+    "parentIds": [
+      "variables"
+    ],
     "title": "Templates",
     "related": [],
     "tags": [],
@@ -835,6 +901,17 @@ window.curricula.cpp = [
       "templates"
     ],
     "title": "Template Constants",
+    "related": [],
+    "tags": [],
+    "content": "<p></p>\n"
+  },
+  {
+    "id": "function-templates",
+    "parentIds": [
+      "functions",
+      "templates"
+    ],
+    "title": "Function Templates",
     "related": [],
     "tags": [],
     "content": "<p></p>\n"
@@ -870,6 +947,17 @@ window.curricula.cpp = [
     "content": "<p></p>\n"
   },
   {
+    "id": "class-templates",
+    "parentIds": [
+      "classes",
+      "templates"
+    ],
+    "title": "Class Templates",
+    "related": [],
+    "tags": [],
+    "content": "<p></p>\n"
+  },
+  {
     "id": "standard-input-output",
     "parentIds": [
       "execution",
@@ -900,8 +988,21 @@ window.curricula.cpp = [
   },
   {
     "id": "headers",
-    "parentIds": [],
+    "parentIds": [
+      "include"
+    ],
     "title": "Headers",
+    "related": [],
+    "tags": [],
+    "content": "<p></p>\n"
+  },
+  {
+    "id": "compiler",
+    "parentIds": [
+      "source",
+      "operating-system"
+    ],
+    "title": "Compiler",
     "related": [],
     "tags": [],
     "content": "<p></p>\n"
@@ -928,7 +1029,9 @@ window.curricula.cpp = [
   },
   {
     "id": "preprocessor",
-    "parentIds": [],
+    "parentIds": [
+      "compiler"
+    ],
     "title": "Preprocessor",
     "related": [],
     "tags": [],
@@ -937,9 +1040,7 @@ window.curricula.cpp = [
   {
     "id": "compilation-units",
     "parentIds": [
-      "headers",
-      "source",
-      "include"
+      "headers"
     ],
     "title": "Compilation Units",
     "related": [],

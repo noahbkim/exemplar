@@ -1,5 +1,5 @@
 ---
 title: Auto
 requires:
-  - types
+  - variables
 ---

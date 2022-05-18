@@ -1,3 +1,5 @@
 ---
 title: Memory
+requires:
+  - processes
 ---
