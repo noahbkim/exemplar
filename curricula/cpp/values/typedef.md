@@ -1,5 +1,5 @@
 ---
-title: Typedef Aliasing
+title: Typedef
 requires:
   - types
 ---

@@ -1,7 +1,6 @@
 ---
 title: Switch Statements
 requires:
-  - control-statements
-  - break
+  - loop-break
   - enums
 ---

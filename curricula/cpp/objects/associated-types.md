@@ -2,5 +2,5 @@
 title: Associated Types
 requires:
   - classes
-  - types
+  - structs
 ---

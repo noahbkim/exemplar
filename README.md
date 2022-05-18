@@ -1,2 +1,3 @@
-# exemplar
-An interactive way to learn programming languages
+# Exemplar
+
+An interactive way to learn ~~programming languages~~ anything.

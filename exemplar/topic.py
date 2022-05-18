@@ -2,14 +2,16 @@ import markdown2
 import yaml
 
 from dataclasses import dataclass
-from typing import List, Any
+from typing import List, Any, Dict, Tuple
 from pathlib import Path
 
 __all__ = (
-    "Topic",)
+    "Topic",
+    "TopicError")
 
 
-FRONTMATTER_SEPARATOR = "---\n"
+FRONTMATTER_HEADER = "---\n"
+FRONTMATTER_FOOTER = "\n---"
 MARKDOWN_EXTRAS = (
     "fenced-code-blocks",
     "numbering",
@@ -18,7 +20,7 @@ MARKDOWN_EXTRAS = (
     "tables",)
 
 
-class InvalidFormat(Exception):
+class TopicError(Exception):
     """Thrown when unable to parse a topic file."""
 
 
@@ -26,10 +28,10 @@ def validate_list_of_strings(data: Any, name: str, path: Path) -> List[str]:
     """List of strings."""
 
     if not isinstance(data, list):
-        raise InvalidFormat(f"{name} must be a list in {path}")
+        raise TopicError(f"{name} must be a list in {path}")
     for item in data:
         if not isinstance(item, str):
-            raise InvalidFormat(f"{name} items must be strings in {path}")
+            raise TopicError(f"{name} items must be strings in {path}")
     return data
 
 
@@ -37,7 +39,7 @@ def validate_string(data: Any, name: str, path: Path) -> str:
     """Single string."""
 
     if not isinstance(data, str):
-        raise InvalidFormat(f"{name} must be a string in {path}")
+        raise TopicError(f"{name} must be a string in {path}")
     return data
 
 
@@ -49,6 +51,7 @@ class Topic:
     path: Path
     title: str
     requires: List[str]
+    related: List[str]
     tags: List[str]
     content: str
 
@@ -59,35 +62,68 @@ class Topic:
             "id": self.id,
             "parentIds": self.requires,
             "title": self.title,
+            "related": self.related,
             "tags": self.tags,
             "content": self.content}
+
+    @classmethod
+    def index(cls, text: str) -> Tuple[int, int, int]:
+        """Locate frontmatter."""
+
+        if not text.startswith(FRONTMATTER_HEADER):
+            raise TopicError(f"missing frontmatter")
+
+        try:
+            frontmatter_end = text.index(FRONTMATTER_FOOTER, len(FRONTMATTER_HEADER))
+        except ValueError:
+            raise TopicError(f"missing frontmatter terminator")
+
+        return len(FRONTMATTER_HEADER), frontmatter_end, frontmatter_end + len(FRONTMATTER_FOOTER)
+
+    @classmethod
+    def split(cls, path: Path) -> Tuple[str, str]:
+        """Find slices for frontmatter."""
+
+        with path.open() as file:
+            text = file.read()
+
+        try:
+            frontmatter_start, frontmatter_end, content_start = cls.index(text)
+        except TopicError as error:
+            raise TopicError(f"{path} {error}")
+
+        frontmatter = text[frontmatter_start:frontmatter_end]
+        content = text[content_start:]
+        return frontmatter, content
 
     @classmethod
     def parse(cls, path: Path):
         """Parse a markdown file with YAML frontmatter."""
 
-        with path.open() as file:
-            text = file.read()
-            if not text.startswith(FRONTMATTER_SEPARATOR):
-                raise InvalidFormat(f"couldn't find frontmatter in {path}")
+        frontmatter, content = cls.split(path)
 
-            try:
-                frontmatter_end_index = text.index(FRONTMATTER_SEPARATOR, len(FRONTMATTER_SEPARATOR))
-            except ValueError:
-                raise InvalidFormat(f"frontmatter missing terminator in {path}")
+        try:
+            metadata = yaml.load(frontmatter, yaml.CLoader)
+        except yaml.YAMLError:
+            raise TopicError(f"invalid frontmatter YAML in {path}")
 
-            frontmatter_slice = text[len(FRONTMATTER_SEPARATOR):frontmatter_end_index]
-            content_slice = text[frontmatter_end_index + len(FRONTMATTER_SEPARATOR):]
+        return Topic(
+            id=path.parts[-1].rsplit(".", maxsplit=1)[0],
+            path=path,
+            title=validate_string(metadata["title"], "title", path),
+            requires=validate_list_of_strings(metadata.get("requires", []), "requires", path),
+            related=validate_list_of_strings(metadata.get("related", []), "related", path),
+            tags=validate_list_of_strings(metadata.get("tags", []), "tags", path),
+            content=markdown2.markdown(content, extras=MARKDOWN_EXTRAS))
 
-            try:
-                frontmatter = yaml.load(frontmatter_slice, yaml.CLoader)
-            except yaml.YAMLError:
-                raise InvalidFormat(f"invalid frontmatter YAML in {path}")
+    @classmethod
+    def load(cls, directory: Path) -> Dict[str, "Topic"]:
+        """Load all topics from a path."""
 
-            return Topic(
-                id=path.parts[-1].rsplit(".", maxsplit=1)[0],
-                path=path,
-                title=validate_string(frontmatter["title"], "title", path),
-                requires=validate_list_of_strings(frontmatter.get("requires", []), "requires", path),
-                tags=validate_list_of_strings(frontmatter.get("tags", []), "tags", path),
-                content=markdown2.markdown(content_slice, extras=MARKDOWN_EXTRAS))
+        topics = {}
+        for path in directory.rglob("*.md"):
+            topic = Topic.parse(path)
+            if topic.id in topics:
+                raise TopicError(f"{topic.path} collides with {topics[topic.id].path}")
+            topics[topic.id] = topic
+        return topics

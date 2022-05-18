@@ -19,6 +19,7 @@ body {
   width: 40%;
   display: none;
   background-color: darkgray;
+  overflow-y: scroll;
 }
 
 #content.visible {
